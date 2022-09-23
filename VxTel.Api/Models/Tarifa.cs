@@ -17,5 +17,5 @@ public class Tarifa
     [JsonIgnore]
     public virtual Cidade CidadeDestino { get; set; }
     [Required]
-    public float valor { get; set; }
+    public float Valor { get; set; }
 }

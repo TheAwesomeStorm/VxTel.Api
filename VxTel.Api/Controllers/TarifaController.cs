@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VxTel.Api.Data.DTOs.Chamada;
 using VxTel.Api.Data.DTOs.Tarifa;
 using VxTel.Api.Services;
+using VxTel.Api.Usecases;
 
 namespace VxTel.Api.Controllers;
 
@@ -9,10 +11,12 @@ namespace VxTel.Api.Controllers;
 public class TarifaController : ControllerBase
 {
     private TarifaService _tarifaService;
+    private ChamadaUsecase _chamadaUsecase;
 
-    public TarifaController(TarifaService tarifaService)
+    public TarifaController(TarifaService tarifaService, ChamadaUsecase chamadaUsecase)
     {
         _tarifaService = tarifaService;
+        _chamadaUsecase = chamadaUsecase;
     }
     
     [HttpPost]
@@ -38,5 +42,13 @@ public class TarifaController : ControllerBase
         var tarifaDto = _tarifaService.RecuperarTarifaPorId(id);
         if (tarifaDto != null) return Ok(tarifaDto);
         return NoContent();
+    }
+
+    [HttpGet]
+    [Route("chamada")]
+    public IActionResult ObterValorChamada([FromQuery] ChamadaDto chamadaDto)
+    {
+        float valorTarifa = _chamadaUsecase.ObterCustoChamada(chamadaDto);
+        return Ok(valorTarifa);
     }
 }

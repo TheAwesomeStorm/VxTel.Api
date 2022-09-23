@@ -37,4 +37,13 @@ public class TarifaService
         if (tarifa != null) return _mapper.Map<ReadTarifaDto>(tarifa);
         return null;
     }
+
+    public ReadTarifaDto RecuperarTarifaPorDestinoEOrigem(int idCidadeDestino, int idCidadeOrigem)
+    {
+        var tarifas = _context.Tarifas.ToList();
+        var tarifa = tarifas.FirstOrDefault(tarifa =>
+            tarifa.IdCidadeDestino == idCidadeDestino && tarifa.IdCidadeOrigem == idCidadeOrigem);
+        if (tarifa == null) return null;
+        return _mapper.Map<ReadTarifaDto>(tarifa);
+    }
 }

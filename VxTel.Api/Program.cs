@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VxTel.Api.Data;
 using VxTel.Api.Services;
+using VxTel.Api.Usecases;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -24,9 +25,12 @@ services.AddDbContext<VxTelDbContext>(options => options
     .UseLazyLoadingProxies()
 );
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// Add scoped services and usecases
 services.AddScoped<PlanoService, PlanoService>();
 services.AddScoped<CidadeService, CidadeService>();
 services.AddScoped<TarifaService, TarifaService>();
+services.AddScoped<ChamadaUsecase, ChamadaUsecase>();
 
 var app = builder.Build();
 
