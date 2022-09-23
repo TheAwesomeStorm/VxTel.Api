@@ -10,4 +10,6 @@ public class ReadCidadeDto
     public string Nome { get; set; }
     [Required]
     public int CodigoDdd { get; set; }
+    public object TarifasComoOrigem { get; set; }
+    public object TarifasComoDestino { get; set; }
 }

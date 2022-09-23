@@ -22,4 +22,20 @@ public class CidadeController : ControllerBase
         if (readDto != null) return Created("Cidade cadastrada", readDto);
         return BadRequest();
     }
+
+    [HttpGet]
+    public IActionResult RecuperarCidades()
+    {
+        var cidadeDtos = _cidadeService.RecuperarCidades();
+        if (cidadeDtos != null) return Ok(cidadeDtos);
+        return NoContent();
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult RecuperarCidadePorId(int id)
+    {
+        var cidadeDto = _cidadeService.RecuperarCidadePorId(id);
+        if (cidadeDto != null) return Ok(cidadeDto);
+        return NoContent();
+    }
 }

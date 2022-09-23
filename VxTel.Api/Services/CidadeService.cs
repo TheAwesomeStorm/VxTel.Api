@@ -23,4 +23,18 @@ public class CidadeService
         _context.SaveChanges();
         return _mapper.Map<ReadCidadeDto>(cidade);
     }
+
+    public List<ReadCidadeDto> RecuperarCidades()
+    {
+        var cidades = _context.Cidades.ToList();
+        return _mapper.Map<List<ReadCidadeDto>>(cidades);
+    }
+
+    public ReadCidadeDto RecuperarCidadePorId(int id)
+    {
+        var cidades = _context.Cidades.ToList();
+        var cidade = cidades.FirstOrDefault(cidade => cidade.Id == id);
+        if (cidade != null) return _mapper.Map<ReadCidadeDto>(cidade);
+        return null;
+    }
 }
