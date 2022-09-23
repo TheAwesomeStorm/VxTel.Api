@@ -12,7 +12,10 @@ var services = builder.Services;
 services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
-services.AddSwaggerGen();
+
+// XML comments for Swagger
+var xmlFilename = $"{Directory.GetCurrentDirectory()}/obj/debug/net6.0/VxTel.Api.xml";
+services.AddSwaggerGen(options => options.IncludeXmlComments(xmlFilename));
 
 // Add DbContext to services
 
