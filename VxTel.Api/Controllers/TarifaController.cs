@@ -18,8 +18,9 @@ public class TarifaController : ControllerBase
     [HttpPost]
     public IActionResult AdicionarTarifa([FromBody] CreateTarifaDto tarifaDto)
     {
-        ReadTarifaDto readDto = _tarifaService.AdicionarTarifa(tarifaDto);
-        if (readDto != null) return Created("Cidade cadastrada", readDto);
+        var readDto = _tarifaService.AdicionarTarifa(tarifaDto);
+        if (readDto != null)
+            return CreatedAtAction(nameof(RecuperarTarifaPorId), new {readDto.Id}, readDto);
         return BadRequest();
     }
 
