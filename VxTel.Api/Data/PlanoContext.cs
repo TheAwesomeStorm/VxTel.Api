@@ -21,4 +21,6 @@ public class PlanoContext : DbContext
     }
     
     public DbSet<Plano> Planos { get; set; }
+    public DbSet<Cidade> Cidades { get; set; }
+    public DbSet<Tarifa> Tarifas { get; set; }
 }

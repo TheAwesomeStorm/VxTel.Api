@@ -23,6 +23,7 @@ services.AddDbContext<PlanoContext>(options => options
     .UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(5, 7))));
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddScoped<PlanoService, PlanoService>();
+services.AddScoped<CidadeService, CidadeService>();
 
 var app = builder.Build();
 
