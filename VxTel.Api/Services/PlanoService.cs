@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentResults;
 using VxTel.Api.Data;
 using VxTel.Api.Data.DTOs;
 using VxTel.Api.Models;
@@ -38,6 +39,15 @@ public class PlanoService
             return _mapper.Map<ReadPlanoDto>(plano);
         }
         return null;
+    }
+
+    public Result RemoverPlanoPorId(int id)
+    {
+        Plano plano = _context.Planos.FirstOrDefault(plano => plano.Id == id);
+        if (plano == null) return Result.Fail("Filme não encontrado");
+        _context.Remove(plano);
+        _context.SaveChanges();
+        return Result.Ok();
     }
 
 }

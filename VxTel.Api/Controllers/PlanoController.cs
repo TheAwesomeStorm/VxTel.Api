@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using VxTel.Api.Data;
 using VxTel.Api.Data.DTOs;
@@ -39,5 +40,13 @@ public class PlanoController : ControllerBase
     {
         ReadPlanoDto plano = _planoService.AdicionarPlano(planoDto);
         return CreatedAtAction(nameof(RecuperarPlanoPorId), new {Id = plano.Id}, plano);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult RemoverPlanoPorId(int id)
+    {
+        Result result = _planoService.RemoverPlanoPorId(id);
+        if (result.IsFailed) return NoContent();
+        return Ok("Plano removido");
     }
 }
