@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VxTel.Api.Data;
+using VxTel.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -17,6 +18,8 @@ services.AddSwaggerGen();
 
 services.AddDbContext<PlanoContext>(options => options
     .UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(5, 7))));
+services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+services.AddScoped<PlanoService, PlanoService>();
 
 var app = builder.Build();
 
