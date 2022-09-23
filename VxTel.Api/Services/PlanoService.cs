@@ -8,10 +8,10 @@ namespace VxTel.Api.Services;
 
 public class PlanoService
 {
-    private PlanoContext _context;
+    private VxTelDbContext _context;
     private IMapper _mapper;
 
-    public PlanoService(PlanoContext context, IMapper mapper)
+    public PlanoService(VxTelDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

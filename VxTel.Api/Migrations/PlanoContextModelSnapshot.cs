@@ -8,7 +8,7 @@ using VxTel.Api.Data;
 
 namespace VxTel.Api.Migrations
 {
-    [DbContext(typeof(PlanoContext))]
+    [DbContext(typeof(VxTelDbContext))]
     partial class PlanoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace VxTel.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cidade");
+                    b.ToTable("Cidades");
                 });
 
             modelBuilder.Entity("VxTel.Api.Models.Plano", b =>
@@ -75,7 +75,7 @@ namespace VxTel.Api.Migrations
 
                     b.HasIndex("IdCidadeOrigem");
 
-                    b.ToTable("Tarifa");
+                    b.ToTable("Tarifas");
                 });
 
             modelBuilder.Entity("VxTel.Api.Models.Tarifa", b =>

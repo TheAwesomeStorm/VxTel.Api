@@ -7,10 +7,10 @@ namespace VxTel.Api.Services;
 
 public class CidadeService
 {
-    private PlanoContext _context;
+    private VxTelDbContext _context;
     private IMapper _mapper;
     
-    public CidadeService(PlanoContext context, IMapper mapper)
+    public CidadeService(VxTelDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

@@ -19,7 +19,7 @@ services.AddSwaggerGen(options => options.IncludeXmlComments(xmlFilename));
 
 // Add DbContext to services
 
-services.AddDbContext<PlanoContext>(options => options
+services.AddDbContext<VxTelDbContext>(options => options
     .UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(5, 7))));
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddScoped<PlanoService, PlanoService>();

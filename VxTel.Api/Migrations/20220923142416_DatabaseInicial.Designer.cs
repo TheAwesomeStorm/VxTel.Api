@@ -9,9 +9,9 @@ using VxTel.Api.Data;
 
 namespace VxTel.Api.Migrations
 {
-    [DbContext(typeof(PlanoContext))]
-    [Migration("20220923134206_AdicionadoRelacionamentoCidadeTarifa")]
-    partial class AdicionadoRelacionamentoCidadeTarifa
+    [DbContext(typeof(VxTelDbContext))]
+    [Migration("20220923142416_DatabaseInicial")]
+    partial class DatabaseInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace VxTel.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cidade");
+                    b.ToTable("Cidades");
                 });
 
             modelBuilder.Entity("VxTel.Api.Models.Plano", b =>
@@ -77,7 +77,7 @@ namespace VxTel.Api.Migrations
 
                     b.HasIndex("IdCidadeOrigem");
 
-                    b.ToTable("Tarifa");
+                    b.ToTable("Tarifas");
                 });
 
             modelBuilder.Entity("VxTel.Api.Models.Tarifa", b =>

@@ -3,9 +3,9 @@ using VxTel.Api.Models;
 
 namespace VxTel.Api.Data;
 
-public class PlanoContext : DbContext
+public class VxTelDbContext : DbContext
 {
-    public PlanoContext(DbContextOptions<PlanoContext> options) : base(options) {}
+    public VxTelDbContext(DbContextOptions<VxTelDbContext> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
