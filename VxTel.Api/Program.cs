@@ -20,10 +20,13 @@ services.AddSwaggerGen(options => options.IncludeXmlComments(xmlFilename));
 // Add DbContext to services
 
 services.AddDbContext<VxTelDbContext>(options => options
-    .UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(5, 7))));
+    .UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(5, 7)))
+    .UseLazyLoadingProxies()
+);
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddScoped<PlanoService, PlanoService>();
 services.AddScoped<CidadeService, CidadeService>();
+services.AddScoped<TarifaService, TarifaService>();
 
 var app = builder.Build();
 

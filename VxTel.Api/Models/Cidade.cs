@@ -13,5 +13,6 @@ public class Cidade
     public int CodigoDdd { get; set; }
     [JsonIgnore]
     public virtual List<Tarifa> TarifasComoOrigem { get; set; }
+    [JsonIgnore]
     public virtual List<Tarifa> TarifasComoDestino { get; set; }
 }
