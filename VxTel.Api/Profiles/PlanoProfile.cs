@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using VxTel.Api.Data.DTOs;
+using VxTel.Api.Data.DTOs.Plano;
 using VxTel.Api.Models;
 
 namespace VxTel.Api.Profiles;

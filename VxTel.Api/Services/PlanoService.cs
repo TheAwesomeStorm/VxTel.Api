@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FluentResults;
 using VxTel.Api.Data;
-using VxTel.Api.Data.DTOs;
+using VxTel.Api.Data.DTOs.Plano;
 using VxTel.Api.Models;
 
 namespace VxTel.Api.Services;

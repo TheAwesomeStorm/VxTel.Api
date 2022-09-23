@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VxTel.Api.Data.DTOs;
+namespace VxTel.Api.Data.DTOs.Plano;
 
 public class CreatePlanoDto
 {

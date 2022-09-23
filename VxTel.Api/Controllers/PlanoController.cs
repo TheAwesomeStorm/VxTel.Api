@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 using Microsoft.AspNetCore.Mvc;
-using VxTel.Api.Data.DTOs;
+using VxTel.Api.Data.DTOs.Plano;
 using VxTel.Api.Services;
 
 namespace VxTel.Api.Controllers;
