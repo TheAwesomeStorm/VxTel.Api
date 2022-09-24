@@ -2,16 +2,17 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using static VxTel.Tests.VxTelDbContextMock;
 using VxTel.Api.Controllers;
+using VxTel.Api.Data.DTOs.Tarifa;
 using VxTel.Api.Profiles;
 using VxTel.Api.Services;
 
 namespace VxTel.Tests;
 
-public class UnitTest1
+public class TarifaControllerTest
 {
     private readonly TarifaController _controller;
 
-    public UnitTest1()
+    public TarifaControllerTest()
     {
         var mapperConfiguration = new MapperConfiguration(mc => mc.AddProfile(new TarifaProfile()));
         var mapper = mapperConfiguration.CreateMapper();
@@ -21,9 +22,17 @@ public class UnitTest1
     }
     
     [Fact]
-    public void Test1()
+    public void Get_WhenCalled_ReturnsOkResult()
     {
-        var something = _controller.RecuperarTarifas();
-        Assert.IsType<OkObjectResult>(something);
+        var tarifas = _controller.RecuperarTarifas();
+        Assert.IsType<OkObjectResult>(tarifas);
+    }
+
+    [Fact]
+    public void RecuperarTarifas_WhenCalled_ReturnsAllTarifas()
+    {
+        var okResult = _controller.RecuperarTarifas() as OkObjectResult;
+        var tarifas = Assert.IsType<List<ReadTarifaDto>>(okResult.Value);
+        Assert.Equal(9, tarifas.Count);
     }
 }

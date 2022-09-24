@@ -20,9 +20,9 @@ public static class VxTelDbContextMock
                 CodigoDdd = i,
             });
         }
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= 3; i++)
         {
-            for (int j = 1; j <= 10; j++)
+            for (int j = 1; j <= 3; j++)
             {
                 dbContext.Tarifas.Add(new Tarifa()
                 {
@@ -32,6 +32,9 @@ public static class VxTelDbContextMock
                 });
             }
         }
+
+        dbContext.SaveChanges();
+        
         return dbContext;
     }
 }
