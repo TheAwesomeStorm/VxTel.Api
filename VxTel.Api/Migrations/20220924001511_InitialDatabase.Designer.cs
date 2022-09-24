@@ -10,8 +10,8 @@ using VxTel.Api.Data;
 namespace VxTel.Api.Migrations
 {
     [DbContext(typeof(VxTelDbContext))]
-    [Migration("20220923142416_DatabaseInicial")]
-    partial class DatabaseInicial
+    [Migration("20220924001511_InitialDatabase")]
+    partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace VxTel.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CodigoDdd")
+                        .IsUnique();
+
                     b.ToTable("Cidades");
                 });
 
@@ -49,9 +52,12 @@ namespace VxTel.Api.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(95)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Nome")
+                        .IsUnique();
 
                     b.ToTable("Planos");
                 });
@@ -68,14 +74,15 @@ namespace VxTel.Api.Migrations
                     b.Property<int>("IdCidadeOrigem")
                         .HasColumnType("int");
 
-                    b.Property<float>("valor")
+                    b.Property<float>("Valor")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdCidadeDestino");
 
-                    b.HasIndex("IdCidadeOrigem");
+                    b.HasIndex("IdCidadeOrigem", "IdCidadeDestino")
+                        .IsUnique();
 
                     b.ToTable("Tarifas");
                 });

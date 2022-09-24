@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 
 namespace VxTel.Api.Models;
 
+[Index(nameof(CodigoDdd), IsUnique = true)]
 public class Cidade
 {
     [Key][Required]

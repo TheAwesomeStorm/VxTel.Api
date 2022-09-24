@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace VxTel.Api.Models;
 
+[Index(nameof(Nome), IsUnique = true)]
 public class Plano
 {
     [Key][Required]

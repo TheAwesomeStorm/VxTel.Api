@@ -9,7 +9,7 @@ using VxTel.Api.Data;
 namespace VxTel.Api.Migrations
 {
     [DbContext(typeof(VxTelDbContext))]
-    partial class PlanoContextModelSnapshot : ModelSnapshot
+    partial class VxTelDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,9 @@ namespace VxTel.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CodigoDdd")
+                        .IsUnique();
+
                     b.ToTable("Cidades");
                 });
 
@@ -47,9 +50,12 @@ namespace VxTel.Api.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(95)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Nome")
+                        .IsUnique();
 
                     b.ToTable("Planos");
                 });
@@ -73,7 +79,8 @@ namespace VxTel.Api.Migrations
 
                     b.HasIndex("IdCidadeDestino");
 
-                    b.HasIndex("IdCidadeOrigem");
+                    b.HasIndex("IdCidadeOrigem", "IdCidadeDestino")
+                        .IsUnique();
 
                     b.ToTable("Tarifas");
                 });

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VxTel.Api.Migrations
 {
-    public partial class DatabaseInicial : Migration
+    public partial class InitialDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,7 @@ namespace VxTel.Api.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                    Nome = table.Column<string>(type: "varchar(95)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Minutos = table.Column<int>(type: "int", nullable: false)
                 },
@@ -52,7 +52,7 @@ namespace VxTel.Api.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IdCidadeOrigem = table.Column<int>(type: "int", nullable: false),
                     IdCidadeDestino = table.Column<int>(type: "int", nullable: false),
-                    valor = table.Column<float>(type: "float", nullable: false)
+                    Valor = table.Column<float>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,14 +73,27 @@ namespace VxTel.Api.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cidades_CodigoDdd",
+                table: "Cidades",
+                column: "CodigoDdd",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Planos_Nome",
+                table: "Planos",
+                column: "Nome",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tarifas_IdCidadeDestino",
                 table: "Tarifas",
                 column: "IdCidadeDestino");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tarifas_IdCidadeOrigem",
+                name: "IX_Tarifas_IdCidadeOrigem_IdCidadeDestino",
                 table: "Tarifas",
-                column: "IdCidadeOrigem");
+                columns: new[] { "IdCidadeOrigem", "IdCidadeDestino" },
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
