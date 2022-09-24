@@ -38,7 +38,7 @@ public class TarifaService
         return null;
     }
 
-    public ReadTarifaDto RecuperarTarifaPorDestinoEOrigem(int idCidadeDestino, int idCidadeOrigem)
+    public ReadTarifaDto RecuperarTarifaPorIdDestinoEOrigem(int idCidadeDestino, int idCidadeOrigem)
     {
         var tarifas = _context.Tarifas.ToList();
         var tarifa = tarifas.FirstOrDefault(tarifa =>

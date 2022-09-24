@@ -2,29 +2,22 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using static VxTel.Tests.VxTelDbContextMock;
 using VxTel.Api.Controllers;
-using VxTel.Api.Data;
 using VxTel.Api.Profiles;
 using VxTel.Api.Services;
-using VxTel.Api.Usecases;
 
 namespace VxTel.Tests;
 
 public class UnitTest1
 {
     private readonly TarifaController _controller;
-    private readonly TarifaService _service;
-    private readonly VxTelDbContext _context;
-    private readonly ChamadaUsecase _usecase;
-    private readonly IMapper _mapper;
 
     public UnitTest1()
     {
         var mapperConfiguration = new MapperConfiguration(mc => mc.AddProfile(new TarifaProfile()));
-        _mapper = mapperConfiguration.CreateMapper();
-        _context = GetDatabaseContext();
-        _service = new TarifaService(_context, _mapper);
-        _usecase = new ChamadaUsecase(_service);
-        _controller = new TarifaController(_service, _usecase);
+        var mapper = mapperConfiguration.CreateMapper();
+        var context = GetDatabaseContext();
+        var service = new TarifaService(context, mapper);
+        _controller = new TarifaController(service);
     }
     
     [Fact]

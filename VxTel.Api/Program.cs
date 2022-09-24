@@ -30,7 +30,7 @@ services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddScoped<PlanoService, PlanoService>();
 services.AddScoped<CidadeService, CidadeService>();
 services.AddScoped<TarifaService, TarifaService>();
-services.AddScoped<ChamadaUsecase, ChamadaUsecase>();
+services.AddScoped<ValorChamadaUsecase, ValorChamadaUsecase>();
 
 var app = builder.Build();
 

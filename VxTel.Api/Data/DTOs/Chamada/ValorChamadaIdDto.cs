@@ -2,7 +2,7 @@
 
 namespace VxTel.Api.Data.DTOs.Chamada;
 
-public class ChamadaIdDto
+public class ValorChamadaIdDto
 {
     [Required]
     public int DuracaoMinutos { get; set; }
