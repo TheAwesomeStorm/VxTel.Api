@@ -12,10 +12,17 @@ public class ChamadaUsecase
         _tarifaService = tarifaService;
     }
     
-    public float ObterCustoChamada(ChamadaDto chamadaDto)
+    public float ObterCustoChamadaPorIdCidade(ChamadaIdDto chamadaIdDto)
     {
         var tarifa = _tarifaService
-            .RecuperarTarifaPorDestinoEOrigem(chamadaDto.IdCidadeDestino, chamadaDto.IdCidadeOrigem);
-        return chamadaDto.DuracaoMinutos * tarifa.valor;
+            .RecuperarTarifaPorDestinoEOrigem(chamadaIdDto.IdCidadeDestino, chamadaIdDto.IdCidadeOrigem);
+        return chamadaIdDto.DuracaoMinutos * tarifa.valor;
+    }
+
+    public float ObterCustoChamadaPorDddCidade(ChamadaDddDto chamadaDddDto)
+    {
+        var tarifa = _tarifaService
+            .RecuperarTarifaPorDddDestinoEOrigem(chamadaDddDto.DddCidadeDestino, chamadaDddDto.DddCidadeOrigem);
+        return chamadaDddDto.DuracaoMinutos * tarifa.valor;
     }
 }

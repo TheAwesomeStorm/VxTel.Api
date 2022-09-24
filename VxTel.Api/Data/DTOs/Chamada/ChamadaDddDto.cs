@@ -2,12 +2,12 @@
 
 namespace VxTel.Api.Data.DTOs.Chamada;
 
-public class ChamadaDto
+public class ChamadaDddDto
 {
     [Required]
     public int DuracaoMinutos { get; set; }
     [Required]
-    public int IdCidadeOrigem { get; set; }
+    public int DddCidadeOrigem { get; set; }
     [Required]
-    public int IdCidadeDestino { get; set; }
+    public int DddCidadeDestino { get; set; }
 }

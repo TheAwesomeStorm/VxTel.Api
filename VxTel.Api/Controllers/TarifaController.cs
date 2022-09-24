@@ -45,10 +45,18 @@ public class TarifaController : ControllerBase
     }
 
     [HttpGet]
-    [Route("chamada")]
-    public IActionResult ObterValorChamada([FromQuery] ChamadaDto chamadaDto)
+    [Route("chamada/id")]
+    public IActionResult ObterValorChamadaPorId([FromQuery] ChamadaIdDto chamadaIdDto)
     {
-        float valorTarifa = _chamadaUsecase.ObterCustoChamada(chamadaDto);
+        float valorTarifa = _chamadaUsecase.ObterCustoChamadaPorIdCidade(chamadaIdDto);
+        return Ok(valorTarifa);
+    }
+
+    [HttpGet]
+    [Route("chamada/ddd")]
+    public IActionResult ObterValorChamadaPorDdd([FromQuery] ChamadaDddDto chamadaDddDto)
+    {
+        float valorTarifa = _chamadaUsecase.ObterCustoChamadaPorDddCidade(chamadaDddDto);
         return Ok(valorTarifa);
     }
 }
