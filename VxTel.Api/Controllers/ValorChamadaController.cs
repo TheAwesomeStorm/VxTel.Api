@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using VxTel.Api.Data.DTOs.Chamada;
 using VxTel.Api.Services;
 using VxTel.Api.Usecases;
@@ -11,10 +12,12 @@ public class ValorChamadaController : ControllerBase
 {
     private TarifaService _tarifaService;
     private ValorChamadaUsecase _valorChamadaUsecase;
+    private PlanoService _planoService;
     
-    public ValorChamadaController(TarifaService tarifaService, ValorChamadaUsecase valorChamadaUsecase)
+    public ValorChamadaController(TarifaService tarifaService, PlanoService planoService, ValorChamadaUsecase valorChamadaUsecase)
     {
         _tarifaService = tarifaService;
+        _planoService = planoService;
         _valorChamadaUsecase = valorChamadaUsecase;
     }
     
@@ -36,6 +39,18 @@ public class ValorChamadaController : ControllerBase
             _tarifaService.RecuperarTarifaPorDddDestinoEOrigem(valorChamadaDddDto.DddCidadeDestino,
                 valorChamadaDddDto.DddCidadeOrigem);
         var valorChamada = _valorChamadaUsecase.ObterCustoChamada(valorChamadaDddDto.DuracaoMinutos, tarifa.valor);
+        return Ok(valorChamada);
+    }
+
+    [HttpGet]
+    public IActionResult ObterValorChamadaComPlano([FromQuery] ValorChamadaDddDto valorChamadaDddDto,
+        [FromQuery][Required] int idPlano)
+    {
+        var plano = _planoService.RecuperarPlanoPorId(idPlano);
+        var tarifa = _tarifaService.RecuperarTarifaPorDddDestinoEOrigem(valorChamadaDddDto.DddCidadeDestino,
+            valorChamadaDddDto.DddCidadeOrigem);
+        var valorChamada =
+            _valorChamadaUsecase.ObterCustoChamadaComPlano(valorChamadaDddDto.DuracaoMinutos, tarifa.valor, plano);
         return Ok(valorChamada);
     }
 }
