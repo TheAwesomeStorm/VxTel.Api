@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VxTel.Api", "VxTel.Api\VxTel.Api.csproj", "{ED5201DA-D006-4A5F-8019-0D98BAAD719A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VxTel.Tests", "VxTel.Tests\VxTel.Tests.csproj", "{E3EDE4F8-2AB5-4377-8F73-A4BF64576221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{ED5201DA-D006-4A5F-8019-0D98BAAD719A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED5201DA-D006-4A5F-8019-0D98BAAD719A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED5201DA-D006-4A5F-8019-0D98BAAD719A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EDE4F8-2AB5-4377-8F73-A4BF64576221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EDE4F8-2AB5-4377-8F73-A4BF64576221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EDE4F8-2AB5-4377-8F73-A4BF64576221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EDE4F8-2AB5-4377-8F73-A4BF64576221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
