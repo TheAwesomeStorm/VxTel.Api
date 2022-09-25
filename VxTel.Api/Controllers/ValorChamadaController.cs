@@ -27,7 +27,7 @@ public class ValorChamadaController : ControllerBase
     {
         var tarifa = _tarifaService.RecuperarTarifaPorIdDestinoEOrigem(valorChamadaIdDto.IdCidadeDestino,
             valorChamadaIdDto.IdCidadeOrigem);
-        var valorChamada = _valorChamadaUsecase.ObterCustoChamada(valorChamadaIdDto.DuracaoMinutos, tarifa.valor);
+        var valorChamada = _valorChamadaUsecase.ObterCustoChamada(valorChamadaIdDto.DuracaoMinutos, tarifa.Valor);
         return Ok(valorChamada);
     }
 
@@ -38,7 +38,7 @@ public class ValorChamadaController : ControllerBase
         var tarifa =
             _tarifaService.RecuperarTarifaPorDddDestinoEOrigem(valorChamadaDddDto.DddCidadeDestino,
                 valorChamadaDddDto.DddCidadeOrigem);
-        var valorChamada = _valorChamadaUsecase.ObterCustoChamada(valorChamadaDddDto.DuracaoMinutos, tarifa.valor);
+        var valorChamada = _valorChamadaUsecase.ObterCustoChamada(valorChamadaDddDto.DuracaoMinutos, tarifa.Valor);
         return Ok(valorChamada);
     }
 
@@ -50,7 +50,7 @@ public class ValorChamadaController : ControllerBase
         var tarifa = _tarifaService.RecuperarTarifaPorDddDestinoEOrigem(valorChamadaDddDto.DddCidadeDestino,
             valorChamadaDddDto.DddCidadeOrigem);
         var valorChamada =
-            _valorChamadaUsecase.ObterCustoChamadaComPlano(valorChamadaDddDto.DuracaoMinutos, tarifa.valor, plano);
+            _valorChamadaUsecase.ObterCustoChamadaComPlano(valorChamadaDddDto.DuracaoMinutos, tarifa.Valor, plano);
         return Ok(valorChamada);
     }
 }

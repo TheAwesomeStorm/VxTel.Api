@@ -9,5 +9,5 @@ public class CreateTarifaDto
     [Required]
     public int IdCidadeDestino { get; set; }
     [Required]
-    public float valor { get; set; }
+    public float Valor { get; set; }
 }
