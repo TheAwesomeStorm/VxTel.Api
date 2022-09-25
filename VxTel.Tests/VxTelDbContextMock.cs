@@ -14,21 +14,21 @@ public static class VxTelDbContextMock
         dbContext.Database.EnsureCreated();
         for (int i = 1; i <= 10; i++)
         {
-            dbContext.Cidades.Add(new Cidade()
+            dbContext.Cities.Add(new City()
             {
-                Nome = $"testCidade{i}",
-                CodigoDdd = i,
+                Name = $"testCidade{i}",
+                DddCode = i,
             });
         }
         for (int i = 1; i <= 3; i++)
         {
             for (int j = 1; j <= 3; j++)
             {
-                dbContext.Tarifas.Add(new Tarifa()
+                dbContext.Fares.Add(new Fare()
                 {
-                    IdCidadeOrigem = i,
-                    IdCidadeDestino = j,
-                    Valor = i + j
+                    OriginCityId = i,
+                    DestinationCityId = j,
+                    Value = i + j
                 });
             }
         }

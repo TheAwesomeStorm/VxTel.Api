@@ -18,97 +18,97 @@ namespace VxTel.Api.Migrations
                 .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("VxTel.Api.Models.Cidade", b =>
+            modelBuilder.Entity("VxTel.Api.Models.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CodigoDdd")
+                    b.Property<int>("DddCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodigoDdd")
+                    b.HasIndex("DddCode")
                         .IsUnique();
 
-                    b.ToTable("Cidades");
+                    b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("VxTel.Api.Models.Plano", b =>
+            modelBuilder.Entity("VxTel.Api.Models.DataPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Minutos")
+                    b.Property<int>("FreeMinutes")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(95)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Nome")
+                    b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Planos");
+                    b.ToTable("DataPlans");
                 });
 
-            modelBuilder.Entity("VxTel.Api.Models.Tarifa", b =>
+            modelBuilder.Entity("VxTel.Api.Models.Fare", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCidadeDestino")
+                    b.Property<int>("DestinationCityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCidadeOrigem")
+                    b.Property<int>("OriginCityId")
                         .HasColumnType("int");
 
-                    b.Property<float>("Valor")
+                    b.Property<float>("Value")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCidadeDestino");
+                    b.HasIndex("DestinationCityId");
 
-                    b.HasIndex("IdCidadeOrigem", "IdCidadeDestino")
+                    b.HasIndex("OriginCityId", "DestinationCityId")
                         .IsUnique();
 
-                    b.ToTable("Tarifas");
+                    b.ToTable("Fares");
                 });
 
-            modelBuilder.Entity("VxTel.Api.Models.Tarifa", b =>
+            modelBuilder.Entity("VxTel.Api.Models.Fare", b =>
                 {
-                    b.HasOne("VxTel.Api.Models.Cidade", "CidadeDestino")
-                        .WithMany("TarifasComoDestino")
-                        .HasForeignKey("IdCidadeDestino")
+                    b.HasOne("VxTel.Api.Models.City", "DestinationCity")
+                        .WithMany("FaresAsDestination")
+                        .HasForeignKey("DestinationCityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VxTel.Api.Models.Cidade", "CidadeOrigem")
-                        .WithMany("TarifasComoOrigem")
-                        .HasForeignKey("IdCidadeOrigem")
+                    b.HasOne("VxTel.Api.Models.City", "OriginCity")
+                        .WithMany("FaresAsOrigin")
+                        .HasForeignKey("OriginCityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CidadeDestino");
+                    b.Navigation("DestinationCity");
 
-                    b.Navigation("CidadeOrigem");
+                    b.Navigation("OriginCity");
                 });
 
-            modelBuilder.Entity("VxTel.Api.Models.Cidade", b =>
+            modelBuilder.Entity("VxTel.Api.Models.City", b =>
                 {
-                    b.Navigation("TarifasComoDestino");
+                    b.Navigation("FaresAsDestination");
 
-                    b.Navigation("TarifasComoOrigem");
+                    b.Navigation("FaresAsOrigin");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VxTel.Api.Models;
 
-[Index(nameof(Nome), IsUnique = true)]
-public class Plano
+[Index(nameof(Name), IsUnique = true)]
+public class DataPlan
 {
     [Key][Required]
     public int Id { get; internal set; }
     [Required]
-    public string Nome { get; set; }
+    public string Name { get; set; }
     [Required]
-    public int Minutos { get; set; }
+    public int FreeMinutes { get; set; }
 }

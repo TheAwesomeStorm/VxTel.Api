@@ -13,99 +13,99 @@ namespace VxTel.Api.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Cidades",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                    Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CodigoDdd = table.Column<int>(type: "int", nullable: false)
+                    DddCode = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cidades", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Planos",
+                name: "DataPlans",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "varchar(95)", nullable: false)
+                    Name = table.Column<string>(type: "varchar(95)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Minutos = table.Column<int>(type: "int", nullable: false)
+                    FreeMinutes = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Planos", x => x.Id);
+                    table.PrimaryKey("PK_DataPlans", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Tarifas",
+                name: "Fares",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdCidadeOrigem = table.Column<int>(type: "int", nullable: false),
-                    IdCidadeDestino = table.Column<int>(type: "int", nullable: false),
-                    Valor = table.Column<float>(type: "float", nullable: false)
+                    OriginCityId = table.Column<int>(type: "int", nullable: false),
+                    DestinationCityId = table.Column<int>(type: "int", nullable: false),
+                    Value = table.Column<float>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tarifas", x => x.Id);
+                    table.PrimaryKey("PK_Fares", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tarifas_Cidades_IdCidadeDestino",
-                        column: x => x.IdCidadeDestino,
-                        principalTable: "Cidades",
+                        name: "FK_Fares_Cities_DestinationCityId",
+                        column: x => x.DestinationCityId,
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tarifas_Cidades_IdCidadeOrigem",
-                        column: x => x.IdCidadeOrigem,
-                        principalTable: "Cidades",
+                        name: "FK_Fares_Cities_OriginCityId",
+                        column: x => x.OriginCityId,
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cidades_CodigoDdd",
-                table: "Cidades",
-                column: "CodigoDdd",
+                name: "IX_Cities_DddCode",
+                table: "Cities",
+                column: "DddCode",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planos_Nome",
-                table: "Planos",
-                column: "Nome",
+                name: "IX_DataPlans_Name",
+                table: "DataPlans",
+                column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tarifas_IdCidadeDestino",
-                table: "Tarifas",
-                column: "IdCidadeDestino");
+                name: "IX_Fares_DestinationCityId",
+                table: "Fares",
+                column: "DestinationCityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tarifas_IdCidadeOrigem_IdCidadeDestino",
-                table: "Tarifas",
-                columns: new[] { "IdCidadeOrigem", "IdCidadeDestino" },
+                name: "IX_Fares_OriginCityId_DestinationCityId",
+                table: "Fares",
+                columns: new[] { "OriginCityId", "DestinationCityId" },
                 unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Planos");
+                name: "DataPlans");
 
             migrationBuilder.DropTable(
-                name: "Tarifas");
+                name: "Fares");
 
             migrationBuilder.DropTable(
-                name: "Cidades");
+                name: "Cities");
         }
     }
 }

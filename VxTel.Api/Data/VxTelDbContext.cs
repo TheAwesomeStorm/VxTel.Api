@@ -9,18 +9,18 @@ public class VxTelDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Tarifa>()
-            .HasOne(tarifa => tarifa.CidadeDestino)
-            .WithMany(cidade => cidade.TarifasComoDestino)
-            .HasForeignKey(tarifa => tarifa.IdCidadeDestino);
+        builder.Entity<Fare>()
+            .HasOne(fare => fare.DestinationCity)
+            .WithMany(city => city.FaresAsDestination)
+            .HasForeignKey(fare => fare.DestinationCityId);
 
-        builder.Entity<Tarifa>()
-            .HasOne(tarifa => tarifa.CidadeOrigem)
-            .WithMany(cidade => cidade.TarifasComoOrigem)
-            .HasForeignKey(tarifa => tarifa.IdCidadeOrigem);
+        builder.Entity<Fare>()
+            .HasOne(fare => fare.OriginCity)
+            .WithMany(city => city.FaresAsOrigin)
+            .HasForeignKey(fare => fare.OriginCityId);
     }
     
-    public DbSet<Plano> Planos { get; set; }
-    public DbSet<Cidade> Cidades { get; set; }
-    public DbSet<Tarifa> Tarifas { get; set; }
+    public DbSet<DataPlan> DataPlans { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Fare> Fares { get; set; }
 }

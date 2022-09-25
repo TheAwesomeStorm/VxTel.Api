@@ -27,10 +27,10 @@ services.AddDbContext<VxTelDbContext>(options => options
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Add scoped services and usecases
-services.AddScoped<PlanoService, PlanoService>();
-services.AddScoped<CidadeService, CidadeService>();
-services.AddScoped<TarifaService, TarifaService>();
-services.AddScoped<ValorChamadaUsecase, ValorChamadaUsecase>();
+services.AddScoped<DataPlanService, DataPlanService>();
+services.AddScoped<CityService, CityService>();
+services.AddScoped<FareService, FareService>();
+services.AddScoped<CallFareUsecase, CallFareUsecase>();
 
 var app = builder.Build();
 

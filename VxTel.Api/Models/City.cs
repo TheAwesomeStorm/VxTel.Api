@@ -4,17 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VxTel.Api.Models;
 
-[Index(nameof(CodigoDdd), IsUnique = true)]
-public class Cidade
+[Index(nameof(DddCode), IsUnique = true)]
+public class City
 {
     [Key][Required]
     public int Id { get; internal set; }
     [Required]
-    public string Nome { get; set; }
+    public string Name { get; set; }
     [Required]
-    public int CodigoDdd { get; set; }
+    public int DddCode { get; set; }
     [JsonIgnore]
-    public virtual List<Tarifa> TarifasComoOrigem { get; set; }
+    public virtual List<Fare> FaresAsOrigin { get; set; }
     [JsonIgnore]
-    public virtual List<Tarifa> TarifasComoDestino { get; set; }
+    public virtual List<Fare> FaresAsDestination { get; set; }
 }
