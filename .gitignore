@@ -1,5 +1,6 @@
-.idea/
-.vs/
+.idea
+.vs
+.config
 bin/
 obj/
 /packages/
