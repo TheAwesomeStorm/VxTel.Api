@@ -33,6 +33,10 @@ Caso uma pasta com as Migrations não esteja disponível no projeto, realizei um
 
 `dotnet ef migrations add "InitialSetup"`
 
+### Populando o banco de dados
+
+Com o banco de dados atualizado, através da etapa acima, execute o *script* `populate.sql` para popular o banco de dados com valores *mock*. O arquivo mencionado encontra-se disponível na pasta *root* deste projeto.
+
 ## Sobre a nomenclatura dos objetos
 
 A nomenclatura dos objetos foi mantida em inglês, para não haver discordância com classes e objetos já estabelecidos em inglês, como `Controllers`, `Services` e `DTOs`, entretanto, a documentação da API será construída em português, visando maior abrangência.
