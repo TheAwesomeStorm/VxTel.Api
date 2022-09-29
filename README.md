@@ -37,3 +37,7 @@ Caso uma pasta com as Migrations não esteja disponível no projeto, realizei um
 
 A nomenclatura dos objetos foi mantida em inglês, para não haver discordância com classes e objetos já estabelecidos em inglês, como `Controllers`, `Services` e `DTOs`, entretanto, a documentação da API será construída em português, visando maior abrangência.
 
+## Sobre os testes de unidade
+
+Até o momento, os estudos e experiência com testes deste desenvolvedor foram mais dirigidos à testes no Front End, foi desenvolvido alguns testes para a `FareController`, entretanto alguns métodos ainda não estão cobertos, como testes para `POST`, `PUT` e `DELETE`. Foi utilizado o `Entity Framework Core` para construção das entidades, e foi implementado um `InMemory Database` para realização dos testes, mas através de pesquisas se observou que muitas `constraints` do banco de dados não são respeitadas neste tipo de *mock*. Alguns *work arounds* foram encontrados, mas não foi possível implementá-los durante esta semana. 
+
