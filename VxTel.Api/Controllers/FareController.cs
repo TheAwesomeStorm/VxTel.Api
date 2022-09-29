@@ -37,6 +37,6 @@ public class FareController : ControllerBase
     {
         var fareDto = _fareService.GetFareById(id);
         if (fareDto != null) return Ok(fareDto);
-        return NoContent();
+        return NotFound();
     }
 }

@@ -35,4 +35,29 @@ public class FareControllerTest
         var fareDtos = Assert.IsType<List<ReadFareDto>>(okResult.Value);
         Assert.Equal(9, fareDtos.Count);
     }
+
+    [Fact]
+    public void GetFareById_WhenCalledWithUnregisteredId_ReturnsNotFoundResult()
+    {
+        var notFoundResult = _controller.ReadFareById(-1);
+
+        Assert.IsType<NotFoundResult>(notFoundResult);
+    }
+
+    [Fact]
+    public void GetFareById_WithExistingId_ReturnsOkResult()
+    {
+        var okResult = _controller.ReadFareById(1);
+        Assert.IsType<OkObjectResult>(okResult);
+    }
+
+    [Fact]
+    public void GetFareById_WithExistingId_ReturnsRightItem()
+    {
+        var testingId = 1;
+        var okResult = _controller.ReadFareById(testingId) as OkObjectResult;
+
+        Assert.IsType<ReadFareDto>(okResult.Value);
+        Assert.Equal(testingId, (okResult.Value as ReadFareDto).Id);
+    }
 }
