@@ -22,9 +22,9 @@ public class FareService
         return _mapper.Map<List<ReadFareDto>>(fares);
     }
 
-    public ReadFareDto AddFare(CreateFareDto cidadeDto)
+    public ReadFareDto AddFare(CreateFareDto fareDto)
     {
-        Fare fare = _mapper.Map<Fare>(cidadeDto);
+        Fare fare = _mapper.Map<Fare>(fareDto);
         _context.Fares.Add(fare);
         _context.SaveChanges();
         return _mapper.Map<ReadFareDto>(fare);
